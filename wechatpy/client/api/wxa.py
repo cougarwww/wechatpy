@@ -436,3 +436,23 @@ class WeChatWxa(BaseWeChatAPI):
                 'open_appid': open_appid,
             }
         )
+
+    def jscode2session(self, code):
+        """
+        登录凭证校验。通过 wx.login() 接口获得临时登录凭证 code 后传到开发者服务器调用此接口完成登录流程。
+        详情请参考
+        https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html
+
+        :param code: 授权公众号或小程序的 appid
+        """
+        res = self._get(
+            'sns/jscode2session',
+            params={
+                'appid': self._client.appid,
+                'secret': self._client.secret,
+                'js_code': code,
+                'grant_type': 'authorization_code'
+            }
+        )
+
+        return res
