@@ -443,7 +443,7 @@ class WeChatWxa(BaseWeChatAPI):
         详情请参考
         https://developers.weixin.qq.com/miniprogram/dev/api/code2Session.html
 
-        :param code: 授权公众号或小程序的 appid
+        :param code: wx.login() 接口获得临时登录凭证 code
         """
         res = self._get(
             'sns/jscode2session',
