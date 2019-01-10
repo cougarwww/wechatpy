@@ -6,11 +6,11 @@ from cryptography.hazmat.backends import default_backend
 
 class WeChatCipher(object):
 
-    def __init__(self, key):
+    def __init__(self, key, iv=None):
         backend = default_backend()
         self.cipher = Cipher(
             algorithms.AES(key),
-            modes.CBC(key[:16]),
+            modes.CBC(key[:16] if not iv else iv),
             backend=backend
         )
 
