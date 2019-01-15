@@ -448,6 +448,7 @@ class WeChatWxa(BaseWeChatAPI):
         res = self._get(
             'sns/jscode2session',
             params={
+                'access_token':"",
                 'appid': self._client.appid,
                 'secret': self._client.secret,
                 'js_code': code,
