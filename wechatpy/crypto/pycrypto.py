@@ -5,8 +5,8 @@ from Crypto.Cipher import AES
 
 class WeChatCipher(object):
 
-    def __init__(self, key, iv=None):
-        self.cipher = AES.new(key, AES.MODE_CBC, key[:16] if not iv else iv)
+    def __init__(self, key):
+        self.cipher = AES.new(key, AES.MODE_CBC, key[:16])
 
     def encrypt(self, plaintext):
         return self.cipher.encrypt(plaintext)
